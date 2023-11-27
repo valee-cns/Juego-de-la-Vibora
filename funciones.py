@@ -107,10 +107,18 @@ def agregar_datos_de_usuario(nombre, score):
 
 def mostrar_contenido_de_la_tabla():
     lista_mensajes = []
+    bandera = True
     with sqlite3.connect("Datos de Usuario.db") as conexion:
         cursor=conexion.execute("SELECT nombre, score FROM usuarios")
         for fila in cursor:
             mensaje_final = ""
+            dic = {}
+            if bandera == True:
+                POS_Y = 100
+                bandera = False
+            
+            else:
+                POS_Y = POS_Y + 50
             datos = list(fila)
             print(datos)
 
@@ -118,8 +126,9 @@ def mostrar_contenido_de_la_tabla():
                 for elemento in datos:
                     mensaje = "{0}".format(elemento)
                     mensaje_final = mensaje_final + mensaje
-            
-                lista_mensajes.append(mensaje_final)
+                dic["datos"] = [mensaje_final]
+                dic["posicion_txt"] = [POS_Y]
+                lista_mensajes.append(dic)
             
             else:
                 lista_mensajes = []
