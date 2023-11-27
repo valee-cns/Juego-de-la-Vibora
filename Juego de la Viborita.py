@@ -39,6 +39,7 @@ pantalla_inicio_imagen = definir_imagen("serpiente.jpg", IMAGEN_INICIO)
 pygame.mixer.init()
 sonido_fondo = pygame.mixer.Sound("musica.mp3")
 sonido_fondo.set_volume(volumen)
+sonido_fondo.play(-1)
 
 # Control de FPS
 FPS = pygame.time.Clock()
@@ -49,7 +50,6 @@ snake = Snake(snake_pos, FOOD_POS, FOOD_SPAWN)
 manzana = Manzana()
 
 while run:
-    sonido_fondo.play(-1)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
