@@ -204,9 +204,13 @@ while run:
             mostrar_contenido = False
         
         for mensaje in lista_mensajes:
-            ranking_txt = mensaje
-            texto_ranking = crear_texto(fuente_2, ranking_txt, NEGRO)
-            colocar_elemento(pantalla, texto_ranking, (100, 100))
+            nombre_score = mensaje["datos"]
+            posicion_txt = mensaje["posicion_txt"]
+            for elemento_1 in nombre_score:
+                for elemento_2 in posicion_txt:
+                    ranking_txt = elemento_1
+                    texto_ranking = crear_texto(fuente_2, ranking_txt, NEGRO)
+                    colocar_elemento(pantalla, texto_ranking, (120, elemento_2))
 
     #Pantalla del juego
     if juego == True:
